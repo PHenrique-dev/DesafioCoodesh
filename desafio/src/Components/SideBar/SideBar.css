@@ -1,6 +1,6 @@
 .sidebar{
     background: #141414;
-    width: 350px;
+    width: 370px;
     height: 100vh;
     position: fixed;
     top: 0;
@@ -29,3 +29,59 @@
 .sidebar .psq input::placeholder{
     color: white;
 }
+.tag-container {
+    margin: 20px;
+    width: 300px;
+    background: #2c2c2c;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .tag-list {
+    max-height: 650px;
+    max-width: 900px; 
+    overflow-y: auto; 
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    scrollbar-width: thin; 
+    scrollbar-color: #888 #2c2c2c;
+  }
+  
+  .tag-list::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .tag-list::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+  }
+  
+  .tag-list::-webkit-scrollbar-track {
+    background: #2c2c2c;
+  }
+  
+  .tag {
+    background: #444;
+    padding: 15px;
+    font-size: 25px;
+    font-weight: 600;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .tag:hover {
+    background: #555;
+  }
+  
+  .checkmark {
+    color: #00aaff;
+    font-size: 18px;
+  }
