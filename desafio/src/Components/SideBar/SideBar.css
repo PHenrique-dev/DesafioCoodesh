@@ -1,0 +1,31 @@
+.sidebar{
+    background: black;
+    width: 350px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: transform 0.3s ease-in-out;
+}
+.sidebar button{
+    margin-top: 20px;
+    margin-left: 280px;
+    padding: 10px;
+    background: none;
+    border: none;
+    font-size: 40px;
+    color: blue;
+}
+.sidebar .psq input{
+    margin-top: 200px;
+    padding: 15px;
+    margin: 15px;
+    border-radius: 15px;
+    font-size: 20px;
+    background-color: gray;
+    box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.5),
+                inset -3px -3px 6px rgba(255, 255, 255, 0.1);
+}
+.sidebar .psq input::placeholder{
+    color: white;
+}
