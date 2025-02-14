@@ -1,0 +1,44 @@
+.home{
+  flex: 1;
+  background: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+.home .title h1{
+    color: white;
+    margin-top: 50px;
+    font-size: 50px;
+}
+.home .filtros{
+    display: flex;
+    margin-top: 100px;
+    justify-content: center;
+}
+.filtros p{
+    color: white;
+    display: flex;
+    margin-right: 300px;
+}
+.filtros button{
+    width: 25px;
+    height: 40px;
+    background: none;
+    border: none;
+    color: blue;
+    align-items: center;
+    font-size: 30px;
+    margin: 10px;
+    margin-left: 280px;
+}
+.filtros input{
+    width: 150px;
+    height: 50px;
+    background: none;
+    border: none;
+    align-items: center;
+    font-size: 18px;
+}
+.filtros input::placeholder{
+    color: white;
+}
