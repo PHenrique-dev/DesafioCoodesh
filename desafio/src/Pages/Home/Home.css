@@ -1,45 +1,94 @@
-.home{
-  flex: 1;
-  background: #333;
-  color: white;
-  padding: 20px;
-  text-align: center;
-}
-.home .title h1{
+.home {
+    flex: 1;
+    background: #2F2F33;
     color: white;
-    margin-top: 50px;
-    font-size: 50px;
-}
-.home .filtros{
+    padding: 20px;
+    text-align: center;
+    margin-top: 70px;
+  }
+  
+  .home .title h1 {
+    color: white;
+    margin-top: 30px;
+    font-size: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  .home .filtros {
     display: flex;
-    margin-top: 100px;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
+  }
+  
+  .filtros p {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 280px;
+    margin-left: 100px;
+  }
+  
+  .filtros button {
+    background: none;
+    border: none;
+    color: #1267FC;
+    font-size: 23px;
+    display: flex;
+    align-items: center;
     justify-content: center;
+    cursor: pointer;
     margin-left: 200px;
-}
-.filtros p{
-    color: white;
-    display: flex;
-    margin-right: 300px;
-}
-.filtros button{
-    width: 25px;
-    height: 40px;
+  }
+  
+  .filtros input {
+    width: 200px;
+    height: 32px;
     background: none;
     border: none;
-    color: blue;
-    align-items: center;
-    font-size: 30px;
-    margin: 10px;
-    margin-left: 280px;
-}
-.filtros input{
-    width: 150px;
-    height: 50px;
-    background: none;
-    border: none;
-    align-items: center;
-    font-size: 18px;
-}
-.filtros input::placeholder{
+    border-radius: 5px;
     color: white;
-}
+    font-size: 16px;
+    padding: 5px;
+    outline: none;
+    transition: 0.3s ease-in-out;
+  }
+  .filtros select{
+    background: #2F2F33;
+    color: white;
+    padding: 7px;
+  }
+  .filtros input::placeholder {
+    color: #bbb;
+  }
+  
+  .filtros input:focus {
+    border-color: #1267FC;
+  }
+  .pagination button{
+    background: none;
+    border: 1px solid #bbb;
+    color: white;
+    padding: 5px;
+    margin: 15px;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .home .title h1 {
+      font-size: 32px;
+    }
+    
+    .filtros {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+  
+    .filtros input {
+      width: 100%;
+    }
+  }
+  

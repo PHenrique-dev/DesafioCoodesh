@@ -1,88 +1,101 @@
-.sidebar{
-    background: #141414;
-    width: 370px;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    transition: transform 0.3s ease-in-out;
+.sidebar {
+  background: #1E1E21;
+  width: 280px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.5);
+  z-index: 1;
 }
-.sidebar button{
-    margin-top: 20px;
-    margin-left: 280px;
-    padding: 10px;
-    background: none;
-    border: none;
-    font-size: 40px;
-    color: blue;
+
+/* Sidebar fechada */
+.sidebar.closed {
+  transform: translateX(-100%);
 }
-.sidebar .psq input{
-    margin-top: 200px;
-    padding: 15px;
-    margin: 15px;
-    border-radius: 15px;
-    font-size: 20px;
-    background-color: gray;
-    box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.5),
-                inset -3px -3px 6px rgba(255, 255, 255, 0.1);
+
+/* Sidebar aberta */
+.sidebar.open {
+  transform: translateX(0);
 }
-.sidebar .psq input::placeholder{
-    color: white;
+
+/* Botão do menu */
+.menu-button {
+  position: fixed;
+  top: 20px;
+  left: 300px;
+  background: none;
+  border: none;
+  font-size: 40px;
+  color: #1267FC;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 2;
 }
+
+
+/* Conteúdo da sidebar */
+.sidebar-content {
+  padding: 20px;
+  margin-top: 100px;
+}
+
+.psq input {
+  width: 90%;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: gray;
+  border: none;
+  color: white;
+  outline: none;
+}
+
+.psq input::placeholder {
+  color: white;
+}
+
+/* Lista de tags */
 .tag-container {
-    margin: 20px;
-    width: 300px;
-    background: #141414;
-    padding: 10px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
+  margin-top: 20px;
+}
+
+.tag-list {
+  max-height: 400px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tag {
+  background: #444;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.tag:hover {
+  background: #555;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 250px;
   }
-  
-  .tag-list {
-    max-height: 650px;
-    max-width: 900px; 
-    overflow-y: auto; 
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    scrollbar-width: thin; 
-    scrollbar-color: #888 #2c2c2c;
+
+  .menu-button {
+    left: 270px;
   }
-  
-  .tag-list::-webkit-scrollbar {
-    width: 6px;
-  }
-  
-  .tag-list::-webkit-scrollbar-thumb {
-    background-color: #888;
-    border-radius: 10px;
-  }
-  
-  .tag-list::-webkit-scrollbar-track {
-    background: #2c2c2c;
-  }
-  
+
   .tag {
-    background: #444;
-    padding: 15px;
-    font-size: 25px;
-    font-weight: 600;
-    border-radius: 5px;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.5),
-                inset -3px -3px 6px rgba(255, 255, 255, 0.1);
+    font-size: 16px;
   }
-  
-  .tag:hover {
-    background: #555;
-  }
-  
-  .checkmark {
-    color: #00aaff;
-    font-size: 18px;
-  }
+}
