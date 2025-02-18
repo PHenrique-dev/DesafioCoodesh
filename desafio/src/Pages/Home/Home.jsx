@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import "./Home.css";
 import "./List.css";
 import axios from "axios";
@@ -8,15 +8,14 @@ import { RadioContext } from "../../Context/RadioContext";
 const API_URL = "https://de1.api.radio-browser.info/json/stations/search";
 
 const Home = () => {
-  const { radios, addRadio, removeRadio } = useContext(RadioContext);
+  const { radios, addRadio, removeRadio, selectedTags } = useContext(RadioContext);
   const [search, setSearch] = useState("");
   const [filterBy, setFilterBy] = useState("name");
   const [stations, setStations] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const radiosPerPage = 10;
   const [playingStation, setPlayingStation] = useState(null);
-  const [selectedTags, setSelectedTags] = useState([]); // Estado para as tags selecionadas
-  const audioRef = new Audio();
+  const audioRef = useRef(new Audio());
 
   useEffect(() => {
     axios
@@ -27,22 +26,21 @@ const Home = () => {
 
   const togglePlay = (streamUrl) => {
     if (playingStation === streamUrl) {
-      audioRef.pause();
+      audioRef.current.pause();
       setPlayingStation(null);
     } else {
-      audioRef.src = streamUrl;
-      audioRef.play();
+      audioRef.current.src = streamUrl;
+      audioRef.current.play();
       setPlayingStation(streamUrl);
     }
   };
+  
 
   const isFavorite = (station) => radios.some((r) => r.id === station.stationuuid);
 
-  // Filtra as estações com base no nome, filtro e tags
-  const filteredStations = stations.filter((station) => {
-    // Filtro de nome e tags
+  const filteredStations = (stations || []).filter((station) => {
     const matchesSearch = station.name.toLowerCase().includes(search.toLowerCase());
-    const matchesTags = selectedTags.every(tag => station.tags && station.tags.includes(tag));
+    const matchesTags = (selectedTags || []).every(tag => station.tags && station.tags.includes(tag));
     return matchesSearch && matchesTags;
   });
 
@@ -51,13 +49,6 @@ const Home = () => {
     (currentPage - 1) * radiosPerPage,
     currentPage * radiosPerPage
   );
-
-  // Lógica para alternar a seleção de tags
-  const toggleTag = (tag) => {
-    setSelectedTags((prevTags) =>
-      prevTags.includes(tag) ? prevTags.filter((t) => t !== tag) : [...prevTags, tag]
-    );
-  };
 
   return (
     <div className="home">
@@ -123,7 +114,6 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Paginação */}
       <div className="pagination">
         <button disabled={currentPage === 1} onClick={() => setCurrentPage((p) => p - 1)}>Anterior</button>
         <span>Página {currentPage} de {totalPages}</span>
